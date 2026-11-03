@@ -1,0 +1,13 @@
+caso_id,regla,tipo,resultado_esperado,cobro_esperado,resultado_real,cobro_real,estado
+CP01,Cliente regular sin descuento,exito,CONFIRMED,120.00,CONFIRMED,120.00,PASA
+CP02,VIP recibe 15% de descuento,exito,CONFIRMED,170.00,CONFIRMED,170.00,PASA
+CP03,Deuda bloquea la confirmacion,error,CustomerHasDebt,,CustomerHasDebt,,PASA
+CP04,Total cero es el limite invalido,limite,ValueError,,ValueError,,PASA
+CP05,Total negativo se rechaza,error,ValueError,,ValueError,,PASA
+CP06,VIP con importe alto,exito,CONFIRMED,850.00,CONFIRMED,850.00,PASA
+CP07,Total positivo minimo (0.01),limite,CONFIRMED,0.01,CONFIRMED,0.01,PASA
+CP08,No confirmar dos veces (TDD),error,ValueError,,ValueError,,PASA
+CP09,VIP con 300,exito,CONFIRMED,255.00,CONFIRMED,255.00,PASA
+CP10,Regular con importe pequeno,exito,CONFIRMED,75.00,CONFIRMED,75.00,PASA
+CP11,Deuda tiene prioridad sobre VIP,error,CustomerHasDebt,,CustomerHasDebt,,PASA
+CP12,Redondeo de descuento VIP (99.99),limite,CONFIRMED,84.99,CONFIRMED,84.99,PASA

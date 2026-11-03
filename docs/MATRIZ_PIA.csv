@@ -1,0 +1,13 @@
+id,regla,entrada,resultado_esperado,tipo,prueba_pytest
+CP-P01,R1 Descuento 10 %,VIP; 4 u; 2100 MXN; sin promocion,Tasa 0.10 (210.00 MXN),exito,test_r1_exito_vip_con_cuatro_unidades_obtiene_10_por_ciento
+CP-P02,R1 Descuento 10 %,VIP; 4 u; promocion activa,Tasa 0,error,test_r1_error_promocion_activa_bloquea_descuento
+CP-P03,R1 Descuento 10 %,VIP; 4 u; total exacto 500,Tasa 0 (umbral estricto >500),limite,test_r1_limite_total_exacto_500_no_supera_el_umbral
+CP-P04,R2 Maximo 20 unidades,2 renglones (2+1),units = 3,exito,test_r2_exito_dos_renglones_suman_tres_unidades
+CP-P05,R2 Maximo 20 unidades,19 u + 2 u,OrderItemLimitExceeded; pedido sin cambios,error,test_r2_error_21_unidades_se_rechazan_sin_modificar_el_pedido
+CP-P06,R2 Maximo 20 unidades,4 renglones x 5 u,units = 20 permitido,limite,test_r2_limite_exactamente_20_unidades_se_permiten
+CP-P07,R3 Confirmar,Articulos + cliente activo,CONFIRMED + evento OrderConfirmed,exito,test_r3_exito_confirma_y_registra_evento
+CP-P08,R3 Confirmar,Cliente inactivo,InvalidOrderData; DRAFT; sin eventos,error,test_r3_error_cliente_inactivo_no_confirma_ni_emite_evento
+CP-P09,R3 Confirmar,Pedido minimo de 1 unidad,CONFIRMED,limite,test_r3_limite_pedido_minimo_de_una_unidad_confirma
+CP-P10,R4 Cancelar,CONFIRMED + motivo,CANCELLED + evento OrderCancelled,exito,test_r4_exito_cancela_pedido_confirmado_con_motivo
+CP-P11,R4 Cancelar,SHIPPED + motivo,InvalidOrderTransition; sigue SHIPPED,error,test_r4_error_no_se_cancela_un_pedido_enviado
+CP-P12,R4 Cancelar,CONFIRMED + motivo vacio/en blanco/None,InvalidOrderData; sigue CONFIRMED,limite,test_r4_limite_motivo_vacio_o_en_blanco_se_rechaza

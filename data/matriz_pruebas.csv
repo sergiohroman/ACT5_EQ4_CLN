@@ -1,0 +1,13 @@
+caso_id,pedido_id,regla,total,vip,deuda,estado_inicial,resultado_esperado,cobro_esperado,tipo
+CP01,1,Cliente regular sin descuento,120,0,0,NEW,CONFIRMED,120.00,exito
+CP02,2,VIP recibe 15% de descuento,200,1,0,NEW,CONFIRMED,170.00,exito
+CP03,3,Deuda bloquea la confirmacion,150,0,500,NEW,CustomerHasDebt,,error
+CP04,4,Total cero es el limite invalido,0,0,0,NEW,ValueError,,limite
+CP05,5,Total negativo se rechaza,-10,0,0,NEW,ValueError,,error
+CP06,6,VIP con importe alto,1000,1,0,NEW,CONFIRMED,850.00,exito
+CP07,7,Total positivo minimo (0.01),0.01,1,0,NEW,CONFIRMED,0.01,limite
+CP08,8,No confirmar dos veces (TDD),250,0,0,CONFIRMED,ValueError,,error
+CP09,9,VIP con 300,300,1,0,NEW,CONFIRMED,255.00,exito
+CP10,10,Regular con importe pequeno,75,0,0,NEW,CONFIRMED,75.00,exito
+CP11,11,Deuda tiene prioridad sobre VIP,500,1,250,NEW,CustomerHasDebt,,error
+CP12,12,Redondeo de descuento VIP (99.99),99.99,1,0,NEW,CONFIRMED,84.99,limite
